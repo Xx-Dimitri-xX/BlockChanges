@@ -1,0 +1,102 @@
+[
+    {
+      "question": "Quelle est la capitale du Japon ?",
+      "answers": ["Tokyo", "Osaka", "Kyoto", "Nagoya"],
+      "correctAnswer": "Tokyo"
+    },
+    {
+      "question": "Quelle est la capitale de la France ?",
+      "answers": ["Lyon", "Marseille", "Paris", "Nice"],
+      "correctAnswer": "Paris"
+    },
+    {
+      "question": "Quelle est la capitale de l'Allemagne ?",
+      "answers": ["Munich", "Berlin", "Francfort", "Hambourg"],
+      "correctAnswer": "Berlin"
+    },
+    {
+      "question": "Quelle est la capitale de l'Italie ?",
+      "answers": ["Milan", "Rome", "Venise", "Naples"],
+      "correctAnswer": "Rome"
+    },
+    {
+      "question": "Quelle est la capitale de l'Espagne ?",
+      "answers": ["Barcelone", "Séville", "Madrid", "Valence"],
+      "correctAnswer": "Madrid"
+    },
+    {
+      "question": "Quelle est la capitale du Royaume-Uni ?",
+      "answers": ["Londres", "Manchester", "Birmingham", "Liverpool"],
+      "correctAnswer": "Londres"
+    },
+    {
+      "question": "Quelle est la capitale de la Russie ?",
+      "answers": ["Saint-Pétersbourg", "Moscou", "Kazan", "Novossibirsk"],
+      "correctAnswer": "Moscou"
+    },
+    {
+      "question": "Quelle est la capitale de la Chine ?",
+      "answers": ["Shanghai", "Pékin", "Guangzhou", "Shenzhen"],
+      "correctAnswer": "Pékin"
+    },
+    {
+      "question": "Quelle est la capitale du Canada ?",
+      "answers": ["Toronto", "Vancouver", "Ottawa", "Montréal"],
+      "correctAnswer": "Ottawa"
+    },
+    {
+      "question": "Quelle est la capitale des États-Unis ?",
+      "answers": ["New York", "Los Angeles", "Washington, D.C.", "Chicago"],
+      "correctAnswer": "Washington, D.C."
+    },
+    {
+      "question": "Quelle est la capitale de l'Australie ?",
+      "answers": ["Sydney", "Melbourne", "Canberra", "Brisbane"],
+      "correctAnswer": "Canberra"
+    },
+    {
+      "question": "Quelle est la capitale du Liban ?",
+      "answers": ["Beyrouth", "Tripoli", "Jounieh", "Byblos"],
+      "correctAnswer": "Beyrouth"
+    },
+    {
+      "question": "Quelle est la capitale de l'Algérie ?",
+      "answers": ["Almeria", "Alger", "Casablanca", "Oran"],
+      "correctAnswer": "Alger"
+    },
+    {
+      "question": "Quelle est la capitale de l'Argentine ?",
+      "answers": ["Rosario", "Buenos Aires", "Mendoza", "Cordoba"],
+      "correctAnswer": "Buenos Aires"
+    },
+    {
+      "question": "Quelle est la capitale de l'Inde ?",
+      "answers": ["Mumbai", "New Delhi", "Bangalore", "Calcutta"],
+      "correctAnswer": "New Delhi"
+    },
+    {
+      "question": "Quelle est la capitale de l'Égypte ?",
+      "answers": ["Alexandrie", "Gizeh", "Le Caire", "Louxor"],
+      "correctAnswer": "Le Caire"
+    },
+    {
+      "question": "Quelle est la capitale de l'Afrique du Sud ?",
+      "answers": ["Johannesburg", "Le Cap", "Pretoria", "Durban"],
+      "correctAnswer": "Pretoria"
+    },
+    {
+      "question": "Quelle est la capitale de la Turquie ?",
+      "answers": ["Istanbul", "Ankara", "Izmir", "Antalya"],
+      "correctAnswer": "Ankara"
+    },
+    {
+      "question": "Quelle est la capitale de la Grèce ?",
+      "answers": ["Thessalonique", "Athènes", "Patras", "Héraklion"],
+      "correctAnswer": "Athènes"
+    },
+    {
+      "question": "Quelle est la capitale de la Corée du Sud ?",
+      "answers": ["Busan", "Séoul", "Incheon", "Daegu"],
+      "correctAnswer": "Séoul"
+    }
+  ]  
