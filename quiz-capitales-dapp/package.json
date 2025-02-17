@@ -1,0 +1,24 @@
+{
+  "name": "quiz-capitales-dapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@openzeppelin/contracts": "^5.2.0",
+    "chai": "^5.2.0",
+    "dotenv": "^16.4.7",
+    "ethers": "^6.13.5",
+    "hardhat": "^2.22.18",
+    "hardhat-coverage": "^0.9.19",
+    "mocha": "^11.1.0"
+  },
+  "dependencies": {
+    "ipfs-http-client": "^60.0.1"
+  }
+}
