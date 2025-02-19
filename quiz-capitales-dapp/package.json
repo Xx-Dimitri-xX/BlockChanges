@@ -19,6 +19,8 @@
     "mocha": "^11.1.0"
   },
   "dependencies": {
-    "ipfs-http-client": "^60.0.1"
+    "ipfs-http-client": "^49.0.0",
+    "mime": "^2.4.7",
+    "nft.storage": "^7.2.0"
   }
 }
