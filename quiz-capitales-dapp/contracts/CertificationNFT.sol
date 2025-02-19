@@ -1,32 +1,32 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 /**
  * @title CertificationNFT
- * @dev NFT non transferable servant de preuve de reussite au quiz.
+ * @dev NFT non transferable avec URI stockée localement (base64).
  */
-contract CertificationNFT is ERC721, Ownable {
-    mapping(uint256 => bool) private locked;
+contract CertificationNFT is ERC721URIStorage, Ownable {
+    uint256 private _tokenIds;
 
     constructor() ERC721("QuizCertification", "QUIZCERT") {}
 
-    /// @notice Mint un NFT de certification pour un utilisateur
-    /// @param to Adresse du destinataire
-    function mint(address to) external onlyOwner {
-        uint256 tokenId = uint256(uint160(to));
-        _safeMint(to, tokenId);
-        locked[tokenId] = true;
+    /// @notice Mint un NFT avec une URI encodee en base64
+    /// @param to Adresse du receveur
+    /// @param tokenURI URI du token encodee en base64
+    function mint(address to, string memory tokenURI) public onlyOwner returns (uint256) {
+        _tokenIds++;
+        uint256 newItemId = _tokenIds;
+        _safeMint(to, newItemId);
+        _setTokenURI(newItemId, tokenURI);
+        return newItemId;
     }
 
-    /// @notice Bloque les transferts (soulbound)
-    /// @dev Autorise uniquement les mint et les burn
-    function _beforeTokenTransfer(address from, address to, uint256 tokenId, uint256 batchSize)
-        internal override
-    {
+    /// @notice Empêche le transfert (soulbound)
+    function _beforeTokenTransfer(address from, address to, uint256 tokenId) internal override {
         require(from == address(0) || to == address(0), "NFT non transferable");
-        super._beforeTokenTransfer(from, to, tokenId, batchSize);
+        super._beforeTokenTransfer(from, to, tokenId);
     }
 }
