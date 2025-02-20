@@ -47,3 +47,5 @@ contract("CertificationNFT", (accounts) => {
         assert(decoded.includes("Example NFT"), "Metadata should contain 'Example NFT'");
     });
 });
+
+// truffle test
