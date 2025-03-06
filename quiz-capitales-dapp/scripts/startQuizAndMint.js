@@ -6,8 +6,7 @@ const CertificationNFTArtifact = require("../build/contracts/CertificationNFT.js
 
 // Config Ganache
 const provider = new ethers.providers.JsonRpcProvider("http://127.0.0.1:8545");
-const wallet = provider.getSigner();
-const contractAddress = "0x38c6043B86379beCadEF9447e7A5945f98D1F755"
+const contractAddress = "0x6b4156472c17839Dda1C3d261d21c5b9a83499Ca";
 
 const questionsData = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "assets", "questions.json"), "utf8"));
 
@@ -36,40 +35,51 @@ async function startQuiz() {
     return score;
 }
 
-async function mintCertification(score) {
-    if (score >= 15) {
-        console.log("🏆 Score suffisant ! Mint du NFT en cours...");
+async function mintCertification(score, wallet) {
+    if (score < 15) {
+        console.log("Score insuffisant (<15/20). Pas de certification obtenue.");
+        return;
+    }
 
-        const contract = new ethers.Contract(contractAddress, CertificationNFTArtifact.abi, wallet);
+    console.log("🏆 Score suffisant ! Minte du NFT en cours...");
 
-        const userAddress = await wallet.getAddress();
-        console.log(`Adresse du wallet : ${userAddress}`);
+    const contract = new ethers.Contract(contractAddress, CertificationNFTArtifact.abi, wallet);
 
-        const metadata = {
-            name: "Certification Quiz des Capitales",
-            description: `Certification obtenue avec un score de ${score}/20.`,
-            score: `${score}/20`,
-            createdAt: Date.now(),
-        };
-        const tokenURI = `data:application/json;base64,${Buffer.from(JSON.stringify(metadata)).toString("base64")}`;
+    const userAddress = await wallet.getAddress();
+    console.log(`Adresse du wallet : ${userAddress}`);
 
+    const metadata = {
+        name: "Certification Quiz des Capitales",
+        description: `Certification obtenue avec un score de ${score}/20.`,
+        score: `${score}/20`,
+        createdAt: Date.now(),
+    };
+    const tokenURI = `data:application/json;base64,${Buffer.from(JSON.stringify(metadata)).toString("base64")}`;
+
+    try {
         const tx = await contract.mint(userAddress, tokenURI);
         await tx.wait();
         console.log(`NFT minté avec succès pour ${userAddress} !`);
-    } else {
-        console.log("Score insuffisant (<15/20). Pas de certification obtenue.");
+    } catch (error) {
+        if (error.message.includes("Max certifications reached")) {
+            console.log("Vous avez déjà atteint le maximum de 2 certifications, impossible de minter un nouveau NFT.");
+        } else {
+            console.error("Erreur inattendue lors du mint :", error);
+        }
     }
 }
 
 async function main() {
     const accounts = await provider.listAccounts();
-//    wallet = provider.getSigner(); // ✅ Correct pour ethers v6+
-    console.log(`✅ Compte utilisé : ${wallet.address}`);
+    const wallet = provider.getSigner(accounts[0]);
+
+    const address = await wallet.getAddress();
+    console.log(`Compte utilisé : ${address}`);
+
     const score = await startQuiz();
-    await mintCertification(score);
+    await mintCertification(score, wallet);
 }
 
-
 main().catch((error) => {
-    console.error("❌ Erreur :", error);
+    console.error("Erreur globale :", error);
 });
